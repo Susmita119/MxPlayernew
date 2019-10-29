@@ -1,0 +1,28 @@
+Create Table SongsTable(
+Id INT Identity(1,1) Primary Key,
+  SongName VARCHAR(30) NOT NULL,
+  DefaultSequence INT
+)
+
+select * from SongsTable;
+
+Insert into SongsTable values ('Cold Water', 1)
+Insert into SongsTable values ('Happier', 2)
+Insert into SongsTable values ('Cheap Thrills', 3)
+Insert into SongsTable values ('Better', 4)
+Insert into SongsTable values ('Attention', 5)
+
+
+
+Scaffold-DbContext "Data Source=DESKTOP-FU798E3\SQLEXPRESS;Initial Catalog=MxPlayerdb;User ID=sa;Password=Test_1234;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+Microsoft.EntityFrameworkCore.SqlServer
+
+
+"ConnectionStrings": {
+    "MxPlayerdb": "Data Source=DESKTOP-FU798E3\\SQLEXPRESS;Initial Catalog=MxPlayerdb;User ID=sa;Password=Test_1234;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  }
+
+
+
+var connection = Configuration.GetConnectionString("MxPlayerdb");
+services.AddDbContext<MxPlayerdbContext>(options => options.UseSqlServer(connection));
